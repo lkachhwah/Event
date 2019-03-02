@@ -9,7 +9,7 @@ public class Tabular {
 	private String location_type;
 	private String pagenumber;
 	private String user = null;
-	ArrayList<Object> neighborhood = new ArrayList<Object>();
+	ArrayList<Object> neighborhood;
 	Facets facets;
 
 	private String when;
@@ -24,12 +24,12 @@ public class Tabular {
 	private float search_time;
 	private String page_size;
 	private float page_count;
-	ArrayList<Object> events = new ArrayList<Object>();
-	ArrayList<Object> venue = new ArrayList<Object>();
+	ArrayList<Featured_events> events;
+	ArrayList<Object> venue;
 	private String total_hits;
 	private float return_facets;
 	private String pagesize;
-	private String search_query = null;
+	private String search_query;
 	private String units;
 
 	// Getter Methods
@@ -172,7 +172,6 @@ public class Tabular {
 		this.stsess = stsess;
 	}
 
-
 	public void setPage_number(String page_number) {
 		this.page_number = page_number;
 	}
@@ -213,12 +212,13 @@ public class Tabular {
 	public String toString() {
 		return "Tabular [sort_direction=" + sort_direction + ", fast_forward_date=" + fast_forward_date
 				+ ", location_type=" + location_type + ", pagenumber=" + pagenumber + ", user=" + user
-				+ ", neighborhood=" + neighborhood + ", facets=" + facets + ", when=" + when + ", mature=" + mature +", facet_depth=" + facet_depth + ", sort_order=" + sort_order
-				+ ", radius=" + radius + ", query=" + query + ", stsess=" + stsess + ", location_id=" + location_id
-				+ ", page_number=" + page_number + ", search_time=" + search_time + ", page_size=" + page_size
-				+ ", page_count=" + page_count + ", events=" + events + ", venue=" + venue + ", total_hits="
-				+ total_hits + ", return_facets=" + return_facets + ", pagesize=" + pagesize + ", search_query="
-				+ search_query + ", units=" + units + "]";
+				+ ", neighborhood=" + neighborhood + ", facets=" + facets + ", when=" + when + ", mature=" + mature
+				+ ", facet_depth=" + facet_depth + ", sort_order=" + sort_order + ", radius=" + radius + ", query="
+				+ query + ", stsess=" + stsess + ", location_id=" + location_id + ", page_number=" + page_number
+				+ ", search_time=" + search_time + ", page_size=" + page_size + ", page_count=" + page_count
+				+ ", events=" + events + ", venue=" + venue + ", total_hits=" + total_hits + ", return_facets="
+				+ return_facets + ", pagesize=" + pagesize + ", search_query=" + search_query + ", units=" + units
+				+ "]";
 	}
 
 	public ArrayList<Object> getNeighborhood() {
@@ -237,17 +237,16 @@ public class Tabular {
 		this.facets = facets;
 	}
 
+	/*
+	 * public void setLocations(Locations locations) { this.locations =
+	 * locations; }
+	 */
 
-
-	/*public void setLocations(Locations locations) {
-		this.locations = locations;
-	}*/
-
-	public ArrayList<Object> getEvents() {
+	public ArrayList<Featured_events> getEvents() {
 		return events;
 	}
 
-	public void setEvents(ArrayList<Object> events) {
+	public void setEvents(ArrayList<Featured_events> events) {
 		this.events = events;
 	}
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.event.pojo.Categories;
+import com.example.event.pojo.Featured_events;
 import com.example.event.pojo.Neighborhoods;
 import com.example.event.service.EventService;
 
@@ -42,32 +43,30 @@ public class EventController {
 	}
 
 	@GetMapping("/events")
-	public void handleSubscriptions(@RequestParam("categories") Collection<String> categories,
-			@RequestParam("location") String location) throws Exception {
+	public ArrayList<Featured_events> handleSubscriptions(@RequestParam(value = "categories", required = false) ArrayList<String> categories,
+			@RequestParam(value = "location", required = false) String location) throws Exception {
 		List<Neighborhoods> locationList = validateLocation(location);
-		List<Categories> categorieList = validateCategories(categories);
-		if (categorieList.isEmpty() || locationList.isEmpty())
-			throw new Exception("Please provide valid category and location name or id");
-		else 
-			eventService.getSortedEvents(categorieList,locationList);
+		List<Categories> categorieList = new ArrayList<>();
+		if (categories != null) {
+			categorieList = validateCategories(categories);
+		}
+		categorieList.forEach(c -> System.out.println(c));
 		logger.info(location);
-		categories.forEach(topic -> logger.info(topic));
-		
-		
+		return eventService.getSortedEvents(categorieList, locationList);
 	}
 
 	private List<Categories> validateCategories(Collection<String> categories) {
 		return getCategories().stream()
-				.filter(e -> (getCategories().stream()
-						.filter(d -> (d.getName().equalsIgnoreCase(String.valueOf(e))
-								|| d.getCategory_id().equalsIgnoreCase(String.valueOf(e))))
+				.filter(e -> (categories.stream()
+						.filter(d -> (e.getName().equalsIgnoreCase(String.valueOf(d))
+								|| e.getCategory_id().equalsIgnoreCase(String.valueOf(d))))
 						.count()) < 1)
 				.collect(Collectors.toList());
 	}
 
 	private List<Neighborhoods> validateLocation(String location) {
-		return getNeighborhoods().stream().filter(
-				c -> (c.getName().equalsIgnoreCase(location) || c.getNeighborhood_id().equalsIgnoreCase(location)))
+		return getNeighborhoods().stream().filter(c -> (location != null
+				&& (c.getName().equalsIgnoreCase(location) || c.getNeighborhood_id().equalsIgnoreCase(location))))
 				.collect(Collectors.toList());
 	}
 }

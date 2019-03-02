@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.event.EventApplication;
 import com.example.event.pojo.Categories;
+import com.example.event.pojo.Featured_events;
 import com.example.event.pojo.Neighborhoods;
 
 @Service
@@ -20,9 +21,9 @@ public class EventService {
 		return EventApplication.data.getSearch().getTabular().getFacets().getCategories();
 	}
 
-	public void getSortedEvents(List<Categories> categorieList, List<Neighborhoods> locationList) {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<Featured_events> getSortedEvents(List<Categories> categorieList, List<Neighborhoods> locationList) {
+		if(categorieList.isEmpty() && locationList.isEmpty()) return EventApplication.data.getSearch().getTabular().getEvents();
+		return null;
 	}
 
 }
