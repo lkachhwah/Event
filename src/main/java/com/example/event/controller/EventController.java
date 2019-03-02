@@ -19,7 +19,9 @@ import com.example.event.pojo.Featured_events;
 import com.example.event.pojo.Neighborhoods;
 import com.example.event.service.EventService;
 
-import io.swagger.annotations.Api;;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;;
 
 @RestController
 @RequestMapping(API_ENDPOINT)
@@ -33,24 +35,27 @@ public class EventController {
 	EventService eventService;
 
 	@GetMapping("locations")
+	@ApiOperation(value=" This api is used to get the event location")
 	public ArrayList<Neighborhoods> getNeighborhoods() {
 		return eventService.getNeighborhoods();
 	}
 
 	@GetMapping("categories")
+	@ApiOperation(value=" This api is used to get the event categories")
 	public ArrayList<Categories> getCategories() {
 		return eventService.getCategories();
 	}
 
 	@GetMapping("/events")
-	public ArrayList<Featured_events> handleSubscriptions(@RequestParam(value = "categories", required = false) ArrayList<String> categories,
-			@RequestParam(value = "location", required = false) String location) throws Exception {
+	@ApiOperation(value=" This api is used to get the event based on categories and location",notes= "To get the cotegories use 'GET /api/event/categorie'and location use GET /api/event/locations '' ")
+	public ArrayList<Featured_events> handleSubscriptions(@ApiParam(value= "categories can be multiple comma seprated string, you can pass id or name")@RequestParam(value = "categories", required = false) ArrayList<String> categories,
+			@ApiParam(value= "location can be single string value, you cna pass id or name")@RequestParam(value = "location", required = false) String location) throws Exception {
 		List<Neighborhoods> locationList = validateLocation(location);
 		List<Categories> categorieList = new ArrayList<>();
 		if (categories != null) {
 			categorieList = validateCategories(categories);
 		}
-		categorieList.forEach(c -> System.out.println(c));
+		categorieList.forEach(c -> logger.info(c.toString()));
 		logger.info(location);
 		return eventService.getSortedEvents(categorieList, locationList);
 	}
