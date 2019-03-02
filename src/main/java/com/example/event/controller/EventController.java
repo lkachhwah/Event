@@ -48,6 +48,8 @@ public class EventController {
 		List<Categories> categorieList = validateCategories(categories);
 		if (categorieList.isEmpty() || locationList.isEmpty())
 			throw new Exception("Please provide valid category and location name or id");
+		else 
+			eventService.getSortedEvents(categorieList,locationList);
 		logger.info(location);
 		categories.forEach(topic -> logger.info(topic));
 		
