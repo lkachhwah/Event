@@ -6,7 +6,7 @@
   
   
 ## swagger API Endpoint Details:
-###  http://<host>/swagger-ui.html 
+###  "http://<host>/swagger-ui.html" 
 
 ### get the host detail in the log one application started
 
