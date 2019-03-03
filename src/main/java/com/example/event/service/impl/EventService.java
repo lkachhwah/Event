@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.event.EventApplication;
 import com.example.event.pojo.Categories;
-import com.example.event.pojo.Featured_events;
+import com.example.event.pojo.FeaturedEvents;
 import com.example.event.pojo.Neighborhoods;
 import com.example.event.service.IEventService;
 
@@ -25,7 +25,7 @@ public class EventService implements IEventService{
 	}
 
 	@Override
-	public ArrayList<Featured_events> getSortedEvents(List<Categories> categorieList, List<Neighborhoods> locationList) {
+	public ArrayList<FeaturedEvents> getSortedEvents(List<Categories> categorieList, List<Neighborhoods> locationList) {
 		if(categorieList.isEmpty() && locationList.isEmpty()) return EventApplication.data.getSearch().getTabular().getEvents();
 		return null;
 	}

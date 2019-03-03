@@ -11,7 +11,7 @@ public class Data {
 	 private String this_url;
 	 private String facebook_app_namespace;
 	 private String home_url;
-	 Featured_events Featured_events;
+	 FeaturedEvents Featured_events;
 	 private String end_of_results;
 	 private float in_rec;
 
@@ -66,7 +66,7 @@ public class Data {
 	  return home_url;
 	 }
 
-	 public Featured_events getFeatured_events() {
+	 public FeaturedEvents getFeatured_events() {
 	  return Featured_events;
 	 }
 
@@ -112,7 +112,7 @@ public class Data {
 	  this.home_url = home_url;
 	 }
 
-	 public void setFeatured_events(Featured_events featured_eventsObject) {
+	 public void setFeatured_events(FeaturedEvents featured_eventsObject) {
 	  this.Featured_events = featured_eventsObject;
 	 }
 
@@ -129,7 +129,7 @@ public class Data {
 		return "MyPojo [in_metro=" + in_metro + ", give_results=" + give_results + ", search=" + search + ", location="
 				+ location + ", localized_base_url=" + localized_base_url + ", is_default_eventful_site="
 				+ is_default_eventful_site + ", category_name=" + category_name + ", this_url=" + this_url
-				+ ", facebook_app_namespace=" + facebook_app_namespace + ", home_url=" + home_url + ", Featured_events="
+				+ ", facebook_app_namespace=" + facebook_app_namespace + ", home_url=" + home_url + ", FeaturedEvents="
 				+ Featured_events + ", end_of_results=" + end_of_results + ", in_rec=" + in_rec + "]";
 	}
 

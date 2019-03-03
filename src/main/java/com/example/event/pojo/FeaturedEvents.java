@@ -2,7 +2,7 @@ package com.example.event.pojo;
 
 import java.util.ArrayList;
 
-public class Featured_events {
+public class FeaturedEvents {
 
 	private String thumb;
 	private String parent_id;

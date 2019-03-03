@@ -24,7 +24,7 @@ public class Tabular {
 	private float search_time;
 	private String page_size;
 	private float page_count;
-	ArrayList<Featured_events> events;
+	ArrayList<FeaturedEvents> events;
 	ArrayList<Object> venue;
 	private String total_hits;
 	private float return_facets;
@@ -242,11 +242,11 @@ public class Tabular {
 	 * locations; }
 	 */
 
-	public ArrayList<Featured_events> getEvents() {
+	public ArrayList<FeaturedEvents> getEvents() {
 		return events;
 	}
 
-	public void setEvents(ArrayList<Featured_events> events) {
+	public void setEvents(ArrayList<FeaturedEvents> events) {
 		this.events = events;
 	}
 

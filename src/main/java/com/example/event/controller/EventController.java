@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.event.pojo.Categories;
-import com.example.event.pojo.Featured_events;
+import com.example.event.pojo.FeaturedEvents;
 import com.example.event.pojo.Neighborhoods;
 import com.example.event.service.impl.EventService;
 
@@ -48,7 +48,7 @@ public class EventController {
 
 	@GetMapping("/events")
 	@ApiOperation(value=" This api is used to get the event based on categories and location",notes= "To get the cotegories use 'GET /api/event/categorie'and location use GET /api/event/locations '' ")
-	public ArrayList<Featured_events> handleSubscriptions(@ApiParam(value= "categories can be multiple comma seprated string, you can pass id or name")@RequestParam(value = "categories", required = false) ArrayList<String> categories,
+	public ArrayList<FeaturedEvents> handleSubscriptions(@ApiParam(value= "categories can be multiple comma seprated string, you can pass id or name")@RequestParam(value = "categories", required = false) ArrayList<String> categories,
 			@ApiParam(value= "location can be single string value, you cna pass id or name")@RequestParam(value = "location", required = false) String location) throws Exception {
 		List<Neighborhoods> locationList = validateLocation(location);
 		List<Categories> categorieList = new ArrayList<>();
