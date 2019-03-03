@@ -1,7 +1,6 @@
 package com.example.event.service;
 
-import java.util.ArrayList;
-
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,14 +29,14 @@ public class EventServiceTest {
 
 	@Test
 	public void testGetNeighborhoods() throws Exception {
-		ArrayList<Neighborhoods> test = eventService.getNeighborhoods();
+		List<Neighborhoods> test = eventService.getNeighborhoods();
 		System.out.println(test);
 		Assert.assertTrue(test != null);
 	}
 
 	@Test
 	public void testGetCategories() throws Exception {
-		ArrayList<Categories> test = eventService.getCategories();
+		List<Categories> test = eventService.getCategories();
 		System.out.println(test);
 		Assert.assertTrue(test != null);
 	}

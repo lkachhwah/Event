@@ -14,7 +14,7 @@ public class FeaturedEvents {
 	private String svid;
 	private String tmf_start_time;
 	private String uid;
-	private float start_time;
+	private Long start_time;
 	private String description;
 	private String deleted_note;
 	private String price;
@@ -81,7 +81,7 @@ public class FeaturedEvents {
 		return uid;
 	}
 
-	public float getStart_time() {
+	public Long getStart_time() {
 		return start_time;
 	}
 
@@ -215,7 +215,7 @@ public class FeaturedEvents {
 		this.uid = uid;
 	}
 
-	public void setStart_time(float start_time) {
+	public void setStart_time(Long start_time) {
 		this.start_time = start_time;
 	}
 
