@@ -4,12 +4,15 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.event.pojo.Data;
-import com.example.event.util.ConnectionsUtility;
+import com.example.event.service.impl.ConnectionsServiceImpl;
+import com.example.event.util.Constant;
+import com.google.gson.Gson;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -24,6 +27,9 @@ public class EventApplication {
 
 	public static Data data;
 
+	@Autowired
+	private ConnectionsServiceImpl connectionsServiceImpl;
+
 	private static Logger logger = Logger.getLogger(EventApplication.class.getName());
 
 	public static void main(String[] args) {
@@ -33,11 +39,15 @@ public class EventApplication {
 	@PostConstruct
 	public void load() {
 		try {
-			data = ConnectionsUtility.loadData();
+			data = connectionsServiceImpl.loadData(Constant.FACLET_QUERY);
 		} catch (Exception e) {
 			logger.info(
 					"There is some issue while loading application, Please check network connection with eventful.com");
 		}
+	}
+
+	public Gson gson() {
+		return new Gson();
 	}
 
 	@Bean
