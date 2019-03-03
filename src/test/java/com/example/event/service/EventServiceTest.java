@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.example.event.pojo.Categories;
 import com.example.event.pojo.Neighborhoods;
+import com.example.event.service.impl.EventService;
 
 @Ignore
 @RunWith(MockitoJUnitRunner.class)

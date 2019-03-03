@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.event.pojo.Categories;
 import com.example.event.pojo.Featured_events;
 import com.example.event.pojo.Neighborhoods;
-import com.example.event.service.EventService;
+import com.example.event.service.impl.EventService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
