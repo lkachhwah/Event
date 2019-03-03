@@ -36,19 +36,19 @@ public class EventController {
 
 	@GetMapping("locations")
 	@ApiOperation(value=" This api is used to get the event location")
-	public ArrayList<Neighborhoods> getNeighborhoods() {
+	public List<Neighborhoods> getNeighborhoods() {
 		return eventService.getNeighborhoods();
 	}
 
 	@GetMapping("categories")
 	@ApiOperation(value=" This api is used to get the event categories")
-	public ArrayList<Categories> getCategories() {
+	public List<Categories> getCategories() {
 		return eventService.getCategories();
 	}
 
 	@GetMapping("/events")
 	@ApiOperation(value=" This api is used to get the event based on categories and location",notes= "To get the cotegories use 'GET /api/event/categorie'and location use GET /api/event/locations '' ")
-	public ArrayList<FeaturedEvents> handleSubscriptions(@ApiParam(value= "categories can be multiple comma seprated string, you can pass id or name")@RequestParam(value = "categories", required = false) ArrayList<String> categories,
+	public List<FeaturedEvents> handleSubscriptions(@ApiParam(value= "categories can be multiple comma seprated string, you can pass id or name")@RequestParam(value = "categories", required = false) ArrayList<String> categories,
 			@ApiParam(value= "location can be single string value, you cna pass id or name")@RequestParam(value = "location", required = false) String location) throws Exception {
 		List<Neighborhoods> locationList = validateLocation(location);
 		List<Categories> categorieList = new ArrayList<>();

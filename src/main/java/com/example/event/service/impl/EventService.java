@@ -15,18 +15,23 @@ import com.example.event.service.IEventService;
 public class EventService implements IEventService{
 
 	@Override
-	public ArrayList<Neighborhoods> getNeighborhoods() {
+	public List<Neighborhoods> getNeighborhoods() {
 		return EventApplication.data.getSearch().getTabular().getFacets().getNeighborhoods();
 	}
 
 	@Override
-	public ArrayList<Categories> getCategories() {
+	public List<Categories> getCategories() {
 		return EventApplication.data.getSearch().getTabular().getFacets().getCategories();
 	}
 
 	@Override
-	public ArrayList<FeaturedEvents> getSortedEvents(List<Categories> categorieList, List<Neighborhoods> locationList) {
-		if(categorieList.isEmpty() && locationList.isEmpty()) return EventApplication.data.getSearch().getTabular().getEvents();
+	public List<FeaturedEvents> getSortedEvents(List<Categories> categorieList, List<Neighborhoods> locationList) {
+		if(categorieList.isEmpty() && locationList.isEmpty()) return sort(EventApplication.data.getSearch().getTabular().getEvents());
+		return null;
+	}
+
+	private List<FeaturedEvents> sort(ArrayList<FeaturedEvents> events) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
