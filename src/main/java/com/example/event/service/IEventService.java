@@ -1,6 +1,5 @@
 package com.example.event.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.event.pojo.Categories;
@@ -16,7 +15,7 @@ public interface IEventService {
 
 	List<Cities> getCities();
 
-	List<FeaturesEvents> getSortedEvents(ArrayList<String> categories, String neighborhood2, String city)
+	List<FeaturesEvents> getSortedEvents(List<String> categories, String neighborhood2, String city)
 			throws Exception;
 
 }

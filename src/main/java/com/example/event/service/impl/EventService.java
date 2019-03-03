@@ -35,7 +35,7 @@ public class EventService implements IEventService {
 	}
 
 	@Override
-	public List<FeaturesEvents> getSortedEvents(ArrayList<String> categories, String neighborhood, String city)
+	public List<FeaturesEvents> getSortedEvents(List<String> categories, String neighborhood, String city)
 			throws Exception {
 		List<FeaturesEvents> featuresEventList = new ArrayList<>();
 		StringJoiner stringJoiner = new StringJoiner("&");
@@ -47,7 +47,6 @@ public class EventService implements IEventService {
 			FeaturesEvents events = new FeaturesEvents();
 			events.setCategoryName(category);
 			String queryParam = Constant.FACLET_QUERY + "&category=" + category + "&" + stringJoiner.toString();
-
 			Data data = connectionsServiceImpl.loadData(queryParam);
 			if (data != null && data.getSearch() != null && data.getSearch().getTabular() != null
 					&& !data.getSearch().getTabular().getEvents().isEmpty())

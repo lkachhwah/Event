@@ -31,9 +31,7 @@ public class ConnectionsServiceImpl {
 		con.setConnectTimeout(100000);
 		con.setReadTimeout(100000);
 		con.setRequestProperty("User-Agent", USER_AGENT);
-		logger.info("\nSending 'GET' request to URL : " + url);
 		int responseCode = con.getResponseCode();
-		logger.info("POST Response Code :  " + responseCode);
 		try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
 			String inputLine;
 			StringBuffer response = new StringBuffer();

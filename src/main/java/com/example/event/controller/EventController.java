@@ -5,6 +5,7 @@ import static com.example.event.pojo.EventConstant.API_ENDPOINT;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,7 +58,7 @@ public class EventController {
 	@GetMapping("/events")
 	@ApiOperation(value = " This api is used to get the event based on categories and location", notes = "To get the cotegories use 'GET /api/event/categorie'and location use GET /api/event/locations '' ")
 	public List<FeaturesEvents> eventsByCategory(
-			@ApiParam(value = "categories can be multiple comma seprated string, you can pass id ") @RequestParam(value = "categories", required = false) ArrayList<String> categories,
+			@ApiParam(value = "categories can be multiple string, you can pass id OR ALL for all category") @RequestParam(value = "categories", required = false) List<String> categories,
 			@ApiParam(value = "location Neighborhoods can be single string value, you can pass id") @RequestParam(value = "neighborhoods", required = false) String neighborhood,
 			@ApiParam(value = "location Cities can be single string value, you can pass id") @RequestParam(value = "cities", required = false) String city)
 			throws Exception {
@@ -65,6 +66,9 @@ public class EventController {
 		logger.info("request neighborhood:" + neighborhood);
 		logger.info("requested city:" + city);
 		logger.info("requested category:" + categories);
+
+		categories = (categories == null || categories.isEmpty() || categories.contains("ALL"))
+				? getCategories().stream().map(c -> c.getCategory_id()).collect(Collectors.toList()) : categories;
 		return eventService.getSortedEvents(categories, neighborhood, city);
 	}
 
